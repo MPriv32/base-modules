@@ -37,7 +37,7 @@ jobs:
       # 4️⃣ Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t $ECR_REPO:$IMAGE_TAG -f ./docker/Dockerfile .
+          docker build -t $ECR_REPO:$IMAGE_TAG -f ./docker/Dockerfile ./docker
 
       # 5️⃣ Scan Docker image with Trivy
       - name: Scan Docker image
