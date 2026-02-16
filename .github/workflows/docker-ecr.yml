@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_REGION: us-west-2
-      ECR_REPO: my-app
+      ECR_REPO: prod-app
       IMAGE_TAG: ${{ github.sha }}
 
     steps:
