@@ -44,17 +44,12 @@ jobs:
       - name: Scan Docker image
         uses: aquasecurity/trivy-action@0.33.1
         with:
-          image-ref: $ECR_REPO:$IMAGE_TAG
+          image-ref: '${{ env.ECR_REPO }}:${{ env.IMAGE_TAG }}'
           format: table
           exit-code: 1
           ignore-unfixed: true
 
-      # 6️⃣ Tag image for ECR
-      - name: Tag image for ECR
-        run: |
-          docker tag $ECR_REPO:$IMAGE_TAG ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
-
-      # 7️⃣ Push image to ECR
+      # 6️⃣ Push image to ECR
       - name: Push Docker image to ECR
         run: |
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+          docker push $ECR_REPO:$IMAGE_TAG
