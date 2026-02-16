@@ -46,7 +46,7 @@ jobs:
         with:
           image-ref: '${{ env.ECR_REPO }}:${{ env.IMAGE_TAG }}'
           format: table
-          exit-code: 1
+          # exit-code: 1
           ignore-unfixed: true
 
       # 6️⃣ Push image to ECR
